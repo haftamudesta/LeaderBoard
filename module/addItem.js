@@ -29,9 +29,9 @@ const items = [
     score: 42,
   },
 ];
-const rebder = () => {
+const render = () => {
   items.forEach((item) => {
     content.innerHTML += `<li>${item.Name} : ${item.score}</li>`;
   });
 };
-export { rebder };
+export { render };

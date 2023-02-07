@@ -1,4 +1,4 @@
 import './style.css';
-import { rebder } from '../module/addItem.js';
+import { render } from '../module/addItem.js';
 
-rebder();
+render();
