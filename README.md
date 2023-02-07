@@ -111,9 +111,8 @@ To run the project, execute in live server.
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [] **Lists**
-- [] **Clear completed List**
-- [] **Interactive lists**
+- [] **display scores**
+- [] **submit scores**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
