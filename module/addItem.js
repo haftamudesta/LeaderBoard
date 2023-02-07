@@ -16,13 +16,12 @@ const resieveData = async () => {
 
 const sendData = async () => {
   const users = {
-    name: nameInput.value,
+    user: nameInput.value,
     score: scoreInput.value,
   };
-  console.log(users);
   try {
     const sentData = await fetch(
-      `https://us-central1-js-capstone-backend.cloudfunctions.net/api//games/:id${myGame}/scores/`,
+      `https://us-central1-js-capstone-backend.cloudfunctions.net/api//games/${myGame}/scores/`,
       {
         mathod: 'POST',
         body: JSON.stringify(users),
