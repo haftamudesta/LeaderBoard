@@ -1,68 +1,43 @@
-const content = document.querySelector('.name-score');
-const items = [
-  {
-    Name: 'Name',
-    score: 100,
-  },
-  {
-    Name: 'Name',
-    score: 20,
-  },
-  {
-    Name: 'Name',
-    score: 50,
-  },
-  {
-    Name: 'Name',
-    score: 78,
-  },
-  {
-    Name: 'Name',
-    score: 125,
-  },
-  {
-    Name: 'Name',
-    score: 77,
-  },
-  {
-    Name: 'Name',
-    score: 42,
-  },
-];
-const rebder = () => {
-  items.forEach((item) => {
-    content.innerHTML += `<li>${item.Name} : ${item.score}</li>`;
-  });
-};
-const users = {
-  name: 'haftamu',
-  score: 34,
+const nameInput = document.querySelector('.name');
+const scoreInput = document.querySelector('.score');
+const myGame = 'Zl4d7IVkemOTTVg2fUdz';
+const resieveData = async () => {
+  try {
+    const endpoint = new URL(
+      'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/:id/scores'
+    );
+    const response = await fetch(endpoint);
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    return false;
+  }
 };
 
-const sendResieve = async () => {
-  console.log('your code starts here');
-  const endpoint = new URL(
-    'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/:id/scores'
-  );
-  console.log('endpoint', endpoint);
-  const response = await fetch(endpoint);
-  console.log('response is:', response);
-  const data = await response.json();
-  console.log(data);
-  console.log('data1 is here:');
-  const sentData = new URL(
-    'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/:id/scores',
-    {
-      mathod: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(users),
-    }
-  );
-  console.log('data1 is here:');
-  const data1 = sentData.json();
-  console.log(data1);
+const sendData = async () => {
+  const users = {
+    name: nameInput.value,
+    score: scoreInput.value,
+  };
+  console.log(users);
+  try {
+    const sentData = await fetch(
+      `https://us-central1-js-capstone-backend.cloudfunctions.net/api//games/:id${myGame}/scores/`,
+      {
+        mathod: 'POST',
+        body: JSON.stringify(users),
+        headers: {
+          'content-type': 'application/json;charset=UTF-8',
+        },
+      }
+    );
+    nameInput.value = '';
+    scoreInput.value = '';
+    return sentData.json();
+  } catch (err) {
+    alert('there is an error');
+    return false;
+  }
 };
 
-export { rebder, sendResieve };
+export { resieveData, sendData };

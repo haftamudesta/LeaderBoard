@@ -1,4 +1,14 @@
 import './style.css';
-import { rebder } from '../module/addItem.js';
+import { resieveData, sendData } from '../module/addItem.js';
+import renderUserScore from '../module/display';
 
-rebder();
+const formContent = document.querySelector('.input-form');
+formContent.addEventListener('submit', (event) => {
+  event.preventDefault();
+  sendData();
+});
+const refreshToDisplay = document.querySelector('.refresh');
+refreshToDisplay.addEventListener('click', (event) => {
+  event.preventDefault();
+  renderUserScore();
+});
