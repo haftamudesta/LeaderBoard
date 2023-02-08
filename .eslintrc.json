@@ -36,6 +36,8 @@
     "object-curly-newline": "off",
     "import/prefer-default-export": "off",
     "paren-newline": "off",
+    "import/no-useless-path-segments": "off",
+    "comma-dangle": "off",
     "import/extensions": [
       1,
       {
