@@ -15,18 +15,17 @@ const resieveData = async () => {
 };
 
 const sendData = async () => {
-  const users = {
-    user: nameInput.value,
-    score: scoreInput.value,
-  };
   try {
     const sentData = await fetch(
-      `https://us-central1-js-capstone-backend.cloudfunctions.net/api//games/${myGame}/scores/`,
+      `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${myGame}/scores`,
       {
-        mathod: 'POST',
-        body: JSON.stringify(users),
+        method: 'POST',
+        body: JSON.stringify({
+          user: nameInput.value,
+          score: scoreInput.value,
+        }),
         headers: {
-          'content-type': 'application/json;charset=UTF-8',
+          'Content-type': 'application/json; charset=UTF-8',
         },
       }
     );
