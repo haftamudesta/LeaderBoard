@@ -29,12 +29,10 @@ const sendData = async () => {
         },
       }
     );
-    nameInput.value = '';
-    scoreInput.value = '';
     return sentData.json();
   } catch (err) {
     return false;
   }
 };
 
-export { resieveData, sendData };
+export { resieveData, sendData, nameInput, scoreInput };
